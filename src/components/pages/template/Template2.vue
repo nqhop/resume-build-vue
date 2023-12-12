@@ -8,7 +8,7 @@
         <div class="resume_item resume_info">
           <div class="title">
             <p class="bold">stephen colbert</p>
-            <p class="regular">Designer</p>
+            <p class="regular">{{ jobtitle }}</p>
           </div>
           <ul>
             <li>
@@ -128,7 +128,7 @@
       </div>
     </div>
 
-    <!-- <div class="resume_right">
+    <div class="resume_right">
       <div class="resume_item resume_about">
         <div class="title">
           <p class="bold">About us</p>
@@ -214,10 +214,20 @@
           <li><i class="fab fa-pagelines"></i></li>
         </ul>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
+<script>
+export default {
+  computed:{
+    jobtitle(){
+      return this.$store.getters['resumes/getjobtitle'];
+    }
+  }  
+}
+
+</script>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap");
 
@@ -447,7 +457,3 @@
     background-color: yellowgreen;
 }
 </style>
-
-<script>
-export default {};
-</script>

@@ -1,16 +1,10 @@
 <template>
   <div class="wrapper">
-    <div class="left-right">
-      <div class="left">
-        <resume-info />
-      </div>
-
-      <div class="right">
-        <!-- <template-vue/> -->
-        <template-2-vue />
-
-        
-      </div>
+    <div class="scrolled-heighted-box-left redbox wrapper-left">
+      <resume-info />
+    </div>
+    <div class="scrolled-heighted-box redbox wrapper-right">
+      <template-2-vue />
     </div>
   </div>
 </template>
@@ -23,6 +17,9 @@ export default {
   components: { ResumeInfo, templateVue, Template2Vue },
 
   data: () => ({
+    // iframe
+    iframeSrc: "https://www.google.com/",
+
     // right
     trip: {
       name: "",
@@ -39,10 +36,57 @@ export default {
       "France",
     ],
   }),
+  methods: {
+    getUserName(){
+        console.log("resume/userName " + this.$store.getters['resumes/userName']);
+        console.log("resume/userName " + this.$store.getters.userName);
+
+        this.$store.commit('login');
+        console.log("userIsAuthenticated:"+this.$store.getters.userIsAuthenticated);
+    }
+
+  },
+  created() {
+    this.getUserName();
+    console.log("getUserName", this.$store.getters["resumes/demoResumes"]);
+  },
 };
 </script>
 
-<style>
+<style scoped>
+.wrapper {
+  margin-top: 65px;
+  display: inline-block;
+  width: 100%;
+}
+.list-item {
+  height: 100px;
+  border: 1px solid grey;
+}
+.scrolled-heighted-box-left {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: inline-block;
+}
+.scrolled-heighted-box {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: inline-block;
+  height: 100vh;
+}
+
+.redbox {
+  border: 2px solid red;
+}
+.wrapper-left,
+.wrapper-right {
+  width: 50%;
+}
+.wrapper-right {
+  right: 0;
+  position: fixed;
+}
+/* 
 .wrapper .left,
 .wrapper .right {
   display: inline-block;
@@ -51,8 +95,8 @@ export default {
 .right {
   width: 50%;
 }
-.left-right{
-    margin-top: 30px;
+.left-right {
+  margin-top: 30px;
 }
 .row {
   margin: 0 -16px;
@@ -72,7 +116,6 @@ export default {
   padding-right: 32px;
 }
 
-
 .upload-image {
   display: flex;
   float: right;
@@ -80,5 +123,5 @@ export default {
 .title {
   font-size: 22px;
   margin-bottom: 8px;
-}
+} */
 </style>
