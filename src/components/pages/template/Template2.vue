@@ -239,7 +239,6 @@
 }
 
 .resume .resume_left {
-  /* width: 280px; */
   width: 33.33%;
   background: #0bb5f4;
 }
