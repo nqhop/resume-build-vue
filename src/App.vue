@@ -1,15 +1,17 @@
 <template>
-  <navigation-drawer v-if="!['resume'].includes($route.name)" />
+  <navigation-drawer v-if="!['resume', 'template2'].includes($route.name)" />
+  <the-header-vue/>
   <router-view />
 </template>
 
 <script>
 import NavigationDrawer from "./components/nav/NavigationDrawer.vue";
-
+import TheHeaderVue from './components/nav/TheHeader.vue';
 export default {
   name: "App",
   components: {
     NavigationDrawer,
+    TheHeaderVue
   }
 }
 </script>

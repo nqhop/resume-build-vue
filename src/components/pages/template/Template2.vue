@@ -127,7 +127,8 @@
         </div>
       </div>
     </div>
-    <div class="resume_right">
+
+    <!-- <div class="resume_right">
       <div class="resume_item resume_about">
         <div class="title">
           <p class="bold">About us</p>
@@ -213,7 +214,7 @@
           <li><i class="fab fa-pagelines"></i></li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -239,6 +240,7 @@
 }
 
 .resume .resume_left {
+  /* width: 280px; */
   width: 33.33%;
   background: #0bb5f4;
 }
@@ -255,7 +257,6 @@
 
 .resume .resume_left .resume_content {
   padding: 0 16px;
-  height: 75%;
 }
 
 .resume .title {
@@ -438,6 +439,12 @@
 
 .resume .resume_right .resume_hobby ul li:last-child:before {
   display: none;
+}
+
+
+/* my css */
+.resume_content{
+    background-color: yellowgreen;
 }
 </style>
 
