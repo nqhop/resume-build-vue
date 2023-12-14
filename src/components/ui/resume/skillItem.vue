@@ -13,15 +13,18 @@
 
         <!-- <v-divider class="mx-4"></v-divider> -->
       </v-col>
-      <v-col cols="2" class="float-right svg-icon"> 
+      <v-col cols="2" class="float-right svg-icon">
         <svg-icon type="mdi" :path="mdiPencilOutline"></svg-icon>
+        <svg-icon type="mdi" :path="mdiDeleteOutline"></svg-icon>
       </v-col>
     </v-card>
   </v-row>
+  
 </template>
 <script>
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiPencilOutline } from "@mdi/js";
+import { mdiDeleteOutline } from '@mdi/js';
 export default {
   props: ["id", "name", "level"],
   components: {
@@ -30,6 +33,7 @@ export default {
   data() {
     return {
       mdiPencilOutline: mdiPencilOutline,
+      mdiDeleteOutline: mdiDeleteOutline
     };
   },
 };
@@ -45,7 +49,10 @@ export default {
 .col {
   display: inline-block;
 }
-.svg-icon{
+.svg-icon {
   margin-top: 25px;
+}
+.svg-icon svg-icon{
+  width: 100%;
 }
 </style>

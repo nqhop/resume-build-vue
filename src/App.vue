@@ -1,6 +1,6 @@
 <template>
   <navigation-drawer v-if="!['resume', 'template2'].includes($route.name)" />
-  <the-header-vue/>
+  <the-header-vue v-if="!['dashboard', 'template'].includes($route.name)"/>
   <router-view />
 </template>
 

@@ -1,7 +1,6 @@
 <template>
   <div class="header">
-    <base-button class="btn" name="Resume" :icon="path" />
-    <p class="header-title text-h6 text-md-h5 text-lg-h4">Resume</p>
+    <base-button class="btn" name="Dashboard" :icon="path" @click="navigate('/dashboard')"/>
     <div class="btn-right">
         <base-button class="btn" @click="print" name="download" :icon="mdiTrayArrowDown"/>
       <base-button class="btn" name="Expand" :icon="mdiArrowExpandAll"/>
@@ -28,10 +27,11 @@ export default {
     };
   },
   methods: {
-    print(){
-        // window.print();
-    }
-  }
+    navigate(route) {
+      this.$router.push(route);
+      this.drawerOpen = false; // Close the navigation drawer after navigation
+    },
+  },
 };
 </script>
 

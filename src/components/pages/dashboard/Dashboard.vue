@@ -1,6 +1,5 @@
 <template>
     <v-container class="fill-height">
-        <button>Create resume</button>
       <v-responsive class="align-center text-center fill-height">
         <v-img height="300" src="@/assets/logo.svg" />
   

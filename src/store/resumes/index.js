@@ -22,6 +22,10 @@ export default {
           phoneNumber: "",
           country: "",
           city: "",
+          summary: "",
+          // avatar: 'E:/Workspace/Vue/resume-build-vue/src/assets/logo.png',
+          avatar: '@/assets/logo.png',
+          // import skillsVue from '@/components/ui/resume/skills.vue';
           skills: [
             {
               id: "01",
@@ -29,6 +33,7 @@ export default {
               level: "Good",
             },
           ],
+
         },
       ],
     };

@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import templateVue from "../template/template.vue";
+// import templateVue from "../template/template.vue";
 import ResumeInfo from "./ResumeInfo.vue";
 import Template2Vue from "../template/Template2.vue";
 export default {
-  components: { ResumeInfo, templateVue, Template2Vue },
+  components: { ResumeInfo, Template2Vue },
 
   data: () => ({
     // right

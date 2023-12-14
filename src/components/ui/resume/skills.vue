@@ -4,14 +4,8 @@
       <v-expansion-panel-title>
         <template v-slot:default>
           <v-row no-gutters>
-            <v-col cols="4" class="d-flex justify-start"> Skills </v-col>
+            <v-col cols="4" class="d-flex justify-start text-h5"> Skills</v-col>
             <v-col cols="8" class="text-grey">
-              <!-- <v-fade-transition leave-absolute>
-                <span v-if="expanded" key="0"> Enter a name for the trip </span>
-                <span v-else key="1">
-                  {{ trip.name }}
-                </span>
-              </v-fade-transition> -->
             </v-col>
           </v-row>
         </template>

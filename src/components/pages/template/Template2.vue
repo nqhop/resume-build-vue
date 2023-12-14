@@ -2,7 +2,8 @@
   <div class="resume">
     <div class="resume_left">
       <div class="resume_profile">
-        <img src="https://i.imgur.com/eCijVBe.png" alt="profile_pic" />
+        <!-- <img :src="resume.avatar" alt="profile_pic" /> -->
+        <img src="@/assets/logo.png" alt="profile_pic" />
       </div>
       <div class="resume_content">
         <div class="resume_item resume_info">
@@ -136,9 +137,7 @@
           <p class="bold">About us</p>
         </div>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis
-          illo fugit officiis distinctio culpa officia totam atque
-          exercitationem inventore repudiandae?
+          {{ resume.summary }}
         </p>
       </div>
       <div class="resume_item resume_work">
@@ -218,9 +217,6 @@
       </div>
     </div>
   </div>
-
-  <p>demo</p>
-  <p>{{ resume.jobtitle }}</p>
 </template>
 
 <script>
