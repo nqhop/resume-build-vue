@@ -3,7 +3,7 @@
     <div class="resume_left">
       <div class="resume_profile">
         <!-- <img :src="resume.avatar" alt="profile_pic" /> -->
-        <img src="@/assets/logo.png" alt="profile_pic" />
+        <img src="@/assets/avatar0.png" alt="profile_pic" />
       </div>
       <div class="resume_content">
         <div class="resume_item resume_info">
@@ -302,7 +302,7 @@ export default {
 .resume .resume_left {
   /* width: 280px; */
   width: 33.33%;
-  background: #0bb5f4;
+  /*background: #0bb5f4;*/
 }
 
 .resume .resume_left .resume_profile {
