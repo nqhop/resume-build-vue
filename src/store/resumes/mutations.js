@@ -3,7 +3,35 @@ export default {
         state.userName = payload.value;
     },
     setjobtitle(state, payload){
-        state.jobtitle = payload.jobtitle
-        console.log("setjobtitle ", payload.jobtitle)
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].jobtitle = payload.jobtitle
+    },
+    setFirstName(state, payload){
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].firstName = payload.firstName
+    },
+    setLastName(state, payload){
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].lastName = payload.lastName
+    },
+    setEmail(state, payload){
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].email = payload.email
+    },
+    setPhoneNumber(state, payload){
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].phoneNumber = payload.phoneNumber
+    },
+    setCountry(state, payload){
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].country = payload.country
+    },
+    setCity(state, payload){
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].city = payload.city
+    },
+    setAdress(state, payload){
+        const index = state.resume.findIndex(obj => obj.id === payload.currendResumeId);
+        state.resume[index].address = payload.address
     }
 }

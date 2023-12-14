@@ -7,30 +7,32 @@
       <div class="resume_content">
         <div class="resume_item resume_info">
           <div class="title">
-            <p class="bold">stephen colbert</p>
-            <p class="regular">{{ jobtitle }}</p>
+            <p class="bold">{{ resume.firstName }} {{ resume.lastName }}</p>
+            <p class="regular">{{  resume.jobtitle }}</p>
           </div>
           <ul>
             <li>
               <div class="icon">
-                <i class="fas fa-map-signs"></i>
+                <svg-icon class="svg-icon" type="mdi" :path="mdiMapMarkerOutline"></svg-icon>
               </div>
               <div class="data">
-                21 Street, Texas <br />
-                USA
+                <!-- 21 Street, Texas <br />
+                USA -->
+                {{ resume.address }}, {{ resume.city }} <br />
+                {{ resume.country }}
               </div>
             </li>
             <li>
               <div class="icon">
-                <i class="fas fa-mobile-alt"></i>
+                <svg-icon class="svg-icon" type="mdi" :path="mdiPhone"></svg-icon>
               </div>
-              <div class="data">+324 4445678</div>
+              <div class="data">{{ resume.phoneNumber }}</div>
             </li>
             <li>
               <div class="icon">
-                <i class="fas fa-envelope"></i>
+                <svg-icon class="svg-icon" type="mdi" :path="mdiEmail"></svg-icon>
               </div>
-              <div class="data">stephen@gmail.com</div>
+              <div class="data">{{ resume.email }}</div>
             </li>
             <li>
               <div class="icon">
@@ -216,17 +218,69 @@
       </div>
     </div>
   </div>
+
+  <p>demo</p>
+  <p>{{ resume.jobtitle }}</p>
 </template>
 
 <script>
+import SvgIcon from "@jamescoyle/vue-icon";
+import { mdiMapMarkerOutline } from "@mdi/js";
+import { mdiPhone } from '@mdi/js';
+import { mdiEmail } from '@mdi/js';
 export default {
-  computed:{
-    jobtitle(){
-      return this.$store.getters['resumes/getjobtitle'];
-    }
-  }  
-}
+  data() {
+    return {
+      mdiMapMarkerOutline: mdiMapMarkerOutline,
+      mdiPhone: mdiPhone,
+      mdiEmail: mdiEmail
+    };
+  },
+  computed: {
+    currendResumeId(){
+      return this.$store.getters["getCurrendResumeId"];
+    },
+    // jobtitle() {
+    //   return this.$store.getters["resumes/getJobtitle"];
+    // },
+    // firstName() {
+    //   return this.$store.getters["resumes/getFirstName"];
+    // },
+    // lastName() {
+    //   return this.$store.getters["resumes/getLastName"];
+    // },
+    // email() {
+    //   return this.$store.getters["resumes/getEmail"];
+    // },
+    // phoneNumber() {
+    //   return this.$store.getters["resumes/getPhoneNumber"];
+    // },
+    // country() {
+    //   return this.$store.getters["resumes/getCountry"];
+    // },
+    // city() {
+    //   return this.$store.getters["resumes/getCity"];
+    // },
+    // address() {
+    //   return this.$store.getters["resumes/getAddress"];
+    // },
 
+
+
+    resume(){
+      return this.$store.getters["resumes/getResumeById"];
+    }
+  },
+  components: {
+    SvgIcon,
+  },
+  created() {
+    console.log("currendResumeId:" + this.currendResumeId);
+    console.log("getFirstNameById:" + this.$store.getters["resumes/getFirstNameById"]);
+    console.log("resume: " + this.resume.jobtitle);
+    console.log("getSkillsByResumeId " + this.$store.getters["resumes/getSkillsByResumeId"]);
+  }
+};
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap");
@@ -303,6 +357,7 @@ export default {
 
 .resume .resume_left ul li .icon {
   width: 35px;
+  min-width: 35px;
   height: 35px;
   background: #fff;
   color: #0bb5f4;
@@ -451,9 +506,13 @@ export default {
   display: none;
 }
 
-
 /* my css */
-.resume_content{
-    background-color: yellowgreen;
+.resume_content {
+  background-color: yellowgreen;
+}
+.icon .svg-icon {
+  display: flex;
+  margin: auto;
+  height: 35px;
 }
 </style>

@@ -17,9 +17,6 @@ export default {
   components: { ResumeInfo, templateVue, Template2Vue },
 
   data: () => ({
-    // iframe
-    iframeSrc: "https://www.google.com/",
-
     // right
     trip: {
       name: "",
@@ -48,7 +45,6 @@ export default {
   },
   created() {
     this.getUserName();
-    console.log("getUserName", this.$store.getters["resumes/demoResumes"]);
   },
 };
 </script>

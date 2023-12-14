@@ -1,4 +1,5 @@
 <template>
+<skill-item-vue/>
   <div class="main">
     <p class="title">Personal Details</p>
 
@@ -26,47 +27,84 @@
 
     <div class="row">
       <div class="col-half">
-        <v-text-field label="First Name" color="primary"> </v-text-field>
+        <v-text-field label="First Name" color="primary" v-model="firstName">
+        </v-text-field>
       </div>
 
       <div class="col-half">
-        <v-text-field label="Last Name" color="primary"> </v-text-field>
+        <v-text-field label="Last Name" color="primary" v-model="lastName">
+        </v-text-field>
       </div>
     </div>
 
     <div class="row">
       <div class="col-half">
-        <v-text-field label="Email" color="primary"> </v-text-field>
+        <v-text-field label="Email" color="primary" v-model="email">
+        </v-text-field>
       </div>
 
       <div class="col-half">
-        <v-text-field label="Phone" color="primary"> </v-text-field>
+        <v-text-field label="Phone" color="primary" v-model="phoneNumber">
+        </v-text-field>
       </div>
     </div>
 
     <div class="row">
       <div class="col-half">
-        <v-text-field label="Country" color="primary"> </v-text-field>
+        <v-text-field
+          label="Country"
+          color="primary"
+          v-model="country"
+          placeholder="e.g. VietNam"
+        >
+        </v-text-field>
       </div>
 
       <div class="col-half">
-        <v-text-field label="City" color="primary"> </v-text-field>
+        <v-text-field
+          label="City"
+          color="primary"
+          v-model="city"
+          placeholder="e.g. Ho Chi Minh"
+        >
+        </v-text-field>
       </div>
     </div>
 
-    <v-text-field
-      label="Main input"
-      :rules="rules"
-      hide-details="auto"
-    ></v-text-field>
+    <div class="row">
+      <div class="col-full">
+        <v-text-field
+          label="Address"
+          color="primary"
+          placeholder="e.g District 2, Thao Dien ward"
+          v-model="address"
+        >
+        </v-text-field>
+      </div>
+    </div>
 
     <p class="title">Professional Summary</p>
-    <v-textarea label="Label" variant="solo-filled"></v-textarea>
+    <p class="sumary">
+      Write 2-4 short & energetic sentences to interest the reader! Mention your
+      role, experience & most importantly - your biggest achievements, best
+      qualities and skills.
+    </p>
+    <v-textarea variant="solo-filled"></v-textarea>
   </div>
+
+
+  <skills-vue/>
 </template>
 
 <script>
+import skillsVue from '@/components/ui/resume/skills.vue';
+import skillItemVue from '@/components/ui/resume/skillItem.vue';
 export default {
+  components: {
+    skillsVue,
+    skillItemVue
+    
+  },
   data: () => ({
     rules: [
       (value) => {
@@ -79,16 +117,63 @@ export default {
       },
     ],
     jobtitle: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    country: "",
+    city: "",
+    address: "",
   }),
   watch: {
-    jobtitle(value) {
-      console.log("jobTitle: " + value);
+    jobtitle() {
       this.$store.commit("resumes/setjobtitle", {
         jobtitle: this.jobtitle,
+        currendResumeId: this.$store.state.currendResumeId
       });
-
-      console.log("getjobtitle" +this.$store.getters['resumes/getjobtitle'])
     },
+    firstName() {
+      this.$store.commit("resumes/setFirstName", {
+        firstName: this.firstName,
+        currendResumeId: this.$store.state.currendResumeId
+      });
+    },
+    lastName() {
+      this.$store.commit("resumes/setLastName", {
+        lastName: this.lastName,
+        currendResumeId: this.$store.state.currendResumeId
+      });
+    },
+    email() {
+      this.$store.commit("resumes/setEmail", {
+        email: this.email,
+        currendResumeId: this.$store.state.currendResumeId
+      });
+    },
+    phoneNumber() {
+      this.$store.commit("resumes/setPhoneNumber", {
+        phoneNumber: this.phoneNumber,
+        currendResumeId: this.$store.state.currendResumeId
+      });
+    },
+    country() {
+      this.$store.commit("resumes/setCountry", {
+        country: this.country,
+        currendResumeId: this.$store.state.currendResumeId
+      });
+    },
+    city() {
+      this.$store.commit("resumes/setCity", {
+        city: this.city,
+        currendResumeId: this.$store.state.currendResumeId
+      });
+    },
+    address(){
+      this.$store.commit("resumes/setAdress", {
+        address: this.address,
+        currendResumeId: this.$store.state.currendResumeId
+      });
+    }
   },
 };
 </script>
@@ -106,6 +191,11 @@ export default {
   width: 50%;
   padding: 0 16px;
 }
+.col-full {
+  display: inline-block;
+  width: 100%;
+  padding: 0 16px;
+}
 .left {
   padding: 32px;
 }
@@ -116,5 +206,11 @@ export default {
 .title {
   font-size: 22px;
   margin: 8px 0px;
+}
+.sumary {
+  margin-bottom: 4px;
+  color: rgb(130, 139, 162);
+  font-size: 14px;
+  line-height: 20px;
 }
 </style>
