@@ -12,7 +12,7 @@
 <script>
 // import templateVue from "../template/template.vue";
 import ResumeInfo from "./ResumeInfo.vue";
-import Template2Vue from "../template/Template2.vue";
+import Template2Vue from "../template/TemplateForResume2.vue";
 export default {
   components: { ResumeInfo, Template2Vue },
 
