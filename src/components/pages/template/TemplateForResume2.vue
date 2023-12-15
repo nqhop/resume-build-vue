@@ -3,8 +3,7 @@
     <div class="resume_left">
       <div class="resume_profile">
         <!-- <img :src="resume.avatar" alt="profile_pic" /> -->
-        <!-- <img src="@/assets/avatar0.png" alt="profile_pic" /> -->
-        <img alt="profile_pic" />
+        <img src="@/assets/avatar0.png" alt="profile_pic" />
       </div>
       <div class="resume_content">
         <div class="resume_item resume_info">
