@@ -6,10 +6,7 @@
       <div class="text-body-2 font-weight-light mb-n1">Import template</div>
 
       <h1 class="text-h2 font-weight-bold">Coming soon</h1>
-
-      <div class="py-14" />
-  
-  </v-responsive>
+    </v-responsive>
   </v-container>
 </template>
 <script>
