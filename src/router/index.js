@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../components/pages/dashboard/Dashboard.vue";
 import Template0 from "../components/pages/template/TemplateForResume.vue";
 import CreateResume from "../components/pages/resume/CreateResume.vue";
-import TemplateForResume2 from "../components/pages/template/templateForResume2.vue";
-import TemplateForResume3 from "../components/pages/template/templateForResume3.vue";
+import TemplateForResume2 from "../components/pages/template/TemplateForResume2.vue";
+import TemplateForResume3 from "../components/pages/template/TemplateForResume3.vue";
 
 const routes = [
   { path: "/", redirect: "/dashboard" },
