@@ -1,12 +1,19 @@
 <template>
-  <skill-item-vue
-    v-for="skill in skills"
-    :key="skill"
-    :name="skill.skillName"
-    :level="skill.level"
-  >
-  </skill-item-vue>
-  <v-card v-if="IsInPutSkill" class="mx-auto mx-4 mb-4">
+  <!-- v-if="hasSkill" -->
+  <!-- <div v-if="hasSkill()"> -->
+  <div>
+    <skill-item-vue
+      v-for="skill in skills"
+      :key="skill"
+      :name="skill.skillName"
+      :level="skill.level"
+      :id="skill.id"
+      @edit-skill="editSkill"
+    >
+    </skill-item-vue>
+  </div>
+
+  <v-card v-if="IsInPutSkill || IsUpdateSkill" class="mx-auto mx-4 mb-4">
     <v-card-title>
       <span class="text-h6">
         <v-text-field
@@ -35,7 +42,7 @@
   </v-card>
   <base-button
     class="btn float-left"
-    name="Add skill"
+    :name="baseButtonName()"
     @click="changeIsPnputSkill"
   />
 </template>
@@ -52,7 +59,9 @@ export default {
     selection: "Beginner",
     levels: ["Beginner", "Moderate", "Good", "Very good", "Excellent"],
     IsInPutSkill: false,
+    IsUpdateSkill: false,
     newSkill: "",
+    skillIdForUpdate: "",
   }),
   computed: {
     skills() {
@@ -60,22 +69,52 @@ export default {
     },
   },
   methods: {
+    baseButtonName() {
+      return this.IsUpdateSkill ? "update" : "Add skill";
+    },
     changeIsPnputSkill() {
+      console.log(
+        "getSkillsByResumeId " +
+          this.$store.getters["resumes/getSkillsByResumeId"]
+      );
+
       this.IsInPutSkill = true;
       console.log("newSkill " + this.newSkill);
       console.log("selection " + this.selection);
 
       if (this.newSkill.length > 0) {
-        this.$store.commit("resumes/addNewSkill", {
-          newSkill: this.newSkill,
-          selection: this.selection,
-          currendResumeId: this.$store.state.currendResumeId,
-        });
+        if (this.IsUpdateSkill) {
+          this.$store.commit("resumes/editSkill", {
+            skillIdForUpdate: this.skillIdForUpdate,
+            updateSelection: this.selection,
+            updateSkillName: this.newSkill,
+            currendResumeId: this.$store.state.currendResumeId,
+          });
+        } else {
+          this.$store.commit("resumes/addNewSkill", {
+            newSkill: this.newSkill,
+            selection: this.selection,
+            currendResumeId: this.$store.state.currendResumeId,
+          });
+        }
 
-        this.newSkill = ''
-        this.selection = 'Beginner'
+        this.newSkill = "";
+        this.selection = "Beginner";
         this.IsInPutSkill = false;
+        this.IsUpdateSkill = false;
       }
+    },
+    editSkill(skillId, name, level) {
+      // console.log("editSkill " + skillId + " " + name + " " + level);
+      this.skillIdForUpdate = skillId;
+      this.newSkill = name;
+      this.selection = level;
+      this.IsUpdateSkill = true;
+    },
+  },
+  mutations: {
+    updateData(state, newData) {
+      console.log("newData " + newData);
     },
   },
 };

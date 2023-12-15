@@ -73,4 +73,30 @@ export default {
     );
     state.resume[index].summary = payload.summary;
   },
+  setProfileLink(state, payload) {
+    const index = state.resume.findIndex(
+      (obj) => obj.id === payload.currendResumeId
+    );
+    state.resume[index].profileLink = payload.profileLink;
+  },
+  deleteSkillById(state, payload) {
+    const index = state.resume.findIndex(
+      (obj) => obj.id === payload.currendResumeId
+    );
+    const skillIndex = state.resume[index].skills.findIndex(
+      (obj) => obj.id == payload.skillId
+    );
+    console.log("deleteSkillById " + skillIndex);
+    state.resume[index].skills.splice(skillIndex, 1);
+  },
+  editSkill(state, payload) {
+    const index = state.resume.findIndex(
+      (obj) => obj.id === payload.currendResumeId
+    );
+    const skillIndex = state.resume[index].skills.findIndex(
+      (obj) => obj.id == payload.skillIdForUpdate
+    );
+    state.resume[index].skills[skillIndex].skillName = payload.updateSkillName 
+    state.resume[index].skills[skillIndex].level = payload.updateSelection
+  },
 };

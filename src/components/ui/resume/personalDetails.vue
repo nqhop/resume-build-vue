@@ -103,6 +103,18 @@
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-full">
+              <v-text-field
+                label="Link Profile"
+                color="primary"
+                placeholder="e.g Github, LinkedIn, Profile,..."
+                v-model="profileLink"
+              >
+              </v-text-field>
+            </div>
+          </div>
+
           <p class="title">Professional Summary</p>
           <p class="sumary">
             Write 2-4 short, mention your role, experience & most importantly -
@@ -137,7 +149,8 @@ export default {
     city: "",
     address: "",
     avatar: null,
-    summary: ""
+    summary: "",
+    profileLink: "",
   }),
   watch: {
     jobtitle() {
@@ -196,8 +209,14 @@ export default {
       });
       console.log("Avatar " + this.avatar);
     },
-    summary(){
-        this.$store.commit("resumes/setSummary", {
+    profileLink() {
+      this.$store.commit("resumes/setProfileLink", {
+        profileLink: this.profileLink,
+        currendResumeId: this.$store.state.currendResumeId,
+      });
+    },
+    summary() {
+      this.$store.commit("resumes/setSummary", {
         summary: this.summary,
         currendResumeId: this.$store.state.currendResumeId,
       });

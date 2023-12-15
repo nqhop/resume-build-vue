@@ -15,21 +15,22 @@ export default {
       resume: [
         {
           id: "01",
-          jobtitle: "java",
-          firstName: "Hop",
-          lastName: "Nguyen",
+          jobtitle: "",
+          firstName: "",
+          lastName: "",
           email: "",
           phoneNumber: "",
           country: "",
           city: "",
           summary: "",
+          profileLink:"",
           // avatar: 'E:/Workspace/Vue/resume-build-vue/src/assets/logo.png',
           avatar: '@/assets/logo.png',
           // import skillsVue from '@/components/ui/resume/skills.vue';
           skills: [
             {
               id: "01",
-              skillName: "java",
+              skillName: "Java",
               level: "Good",
             },
           ],

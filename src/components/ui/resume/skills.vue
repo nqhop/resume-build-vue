@@ -16,7 +16,7 @@
       </v-expansion-panel-text>
     </v-expansion-panel>
 
-    <v-expansion-panel>
+    <!-- <v-expansion-panel>
       <v-expansion-panel-title>
         <template v-slot:default="{ expanded }">
           <v-row no-gutters>
@@ -126,7 +126,8 @@
           </v-col>
         </v-row>
       </v-expansion-panel-text>
-    </v-expansion-panel>
+    </v-expansion-panel> -->
+
   </v-expansion-panels>
 </template>
 <script>

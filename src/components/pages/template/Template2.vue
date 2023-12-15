@@ -9,12 +9,16 @@
         <div class="resume_item resume_info">
           <div class="title">
             <p class="bold">{{ resume.firstName }} {{ resume.lastName }}</p>
-            <p class="regular">{{  resume.jobtitle }}</p>
+            <p class="regular">{{ resume.jobtitle }}</p>
           </div>
           <ul>
             <li>
               <div class="icon">
-                <svg-icon class="svg-icon" type="mdi" :path="mdiMapMarkerOutline"></svg-icon>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiMapMarkerOutline"
+                ></svg-icon>
               </div>
               <div class="data">
                 <!-- 21 Street, Texas <br />
@@ -25,21 +29,33 @@
             </li>
             <li>
               <div class="icon">
-                <svg-icon class="svg-icon" type="mdi" :path="mdiPhone"></svg-icon>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiPhone"
+                ></svg-icon>
               </div>
               <div class="data">{{ resume.phoneNumber }}</div>
             </li>
             <li>
               <div class="icon">
-                <svg-icon class="svg-icon" type="mdi" :path="mdiEmail"></svg-icon>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiEmail"
+                ></svg-icon>
               </div>
               <div class="data">{{ resume.email }}</div>
             </li>
             <li>
               <div class="icon">
-                <i class="fab fa-weebly"></i>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiLinkVariant"
+                ></svg-icon>
               </div>
-              <div class="data">www.stephen.com</div>
+              <div class="data">{{ resume.profileLink }}</div>
             </li>
           </ul>
         </div>
@@ -47,7 +63,17 @@
           <div class="title">
             <p class="bold">skill's</p>
           </div>
-          <ul>
+          <ul v-for="skill in resume.skills" :key="skill.id">
+            <li>
+              <div class="skill_name">{{ skill.skillName }}</div>
+              <div class="skill_progress">
+                <!-- <span style="width: 80%"></span> -->
+                <span :style="{ width: getProgress(skill.level) }"></span>
+              </div>
+              <div class="skill_per">{{ getProgress(skill.level) }}</div>
+            </li>
+          </ul>
+          <!-- <ul>
             <li>
               <div class="skill_name">HTML</div>
               <div class="skill_progress">
@@ -83,7 +109,7 @@
               </div>
               <div class="skill_per">88%</div>
             </li>
-          </ul>
+          </ul> -->
         </div>
         <div class="resume_item resume_social">
           <div class="title">
@@ -222,60 +248,52 @@
 <script>
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiMapMarkerOutline } from "@mdi/js";
-import { mdiPhone } from '@mdi/js';
-import { mdiEmail } from '@mdi/js';
+import { mdiPhone } from "@mdi/js";
+import { mdiEmail } from "@mdi/js";
+import { mdiLinkVariant } from '@mdi/js';
 export default {
   data() {
     return {
       mdiMapMarkerOutline: mdiMapMarkerOutline,
       mdiPhone: mdiPhone,
-      mdiEmail: mdiEmail
+      mdiEmail: mdiEmail,
+      mdiLinkVariant: mdiLinkVariant
     };
   },
   computed: {
-    currendResumeId(){
+    currendResumeId() {
       return this.$store.getters["getCurrendResumeId"];
     },
-    // jobtitle() {
-    //   return this.$store.getters["resumes/getJobtitle"];
-    // },
-    // firstName() {
-    //   return this.$store.getters["resumes/getFirstName"];
-    // },
-    // lastName() {
-    //   return this.$store.getters["resumes/getLastName"];
-    // },
-    // email() {
-    //   return this.$store.getters["resumes/getEmail"];
-    // },
-    // phoneNumber() {
-    //   return this.$store.getters["resumes/getPhoneNumber"];
-    // },
-    // country() {
-    //   return this.$store.getters["resumes/getCountry"];
-    // },
-    // city() {
-    //   return this.$store.getters["resumes/getCity"];
-    // },
-    // address() {
-    //   return this.$store.getters["resumes/getAddress"];
-    // },
-
-
-
-    resume(){
+    resume() {
       return this.$store.getters["resumes/getResumeById"];
-    }
+    },
+  },
+  methods: {
+    getProgress(level) {
+      const levels = ["Beginner", "Moderate", "Good", "Very good", "Excellent"];
+      const levelsProgess = [20, 40, 60, 80, 100];
+      for(let i = 0; i < levels.length; i++){
+        if(level == levels[i]){
+          return levelsProgess[i] + '%'
+        }
+      }
+      return "80%";
+    },
   },
   components: {
     SvgIcon,
   },
   created() {
     console.log("currendResumeId:" + this.currendResumeId);
-    console.log("getFirstNameById:" + this.$store.getters["resumes/getFirstNameById"]);
+    console.log(
+      "getFirstNameById:" + this.$store.getters["resumes/getFirstNameById"]
+    );
     console.log("resume: " + this.resume.jobtitle);
-    console.log("getSkillsByResumeId " + this.$store.getters["resumes/getSkillsByResumeId"]);
-  }
+    console.log(
+      "getSkillsByResumeId " +
+        this.$store.getters["resumes/getSkillsByResumeId"]
+    );
+  },
 };
 </script>
 <style>
