@@ -42,4 +42,10 @@ export default {
     const skills = resume.skills;
     return skills;
   },
+  getExperiencesByResumeId(state, _, rootState, _2){
+    const currendResumeId = rootState.currendResumeId;
+    const resume = state.resume.find((item) => item.id == currendResumeId);
+    const experiences = resume.experiences;
+    return experiences;
+  }
 };

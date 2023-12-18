@@ -1,5 +1,5 @@
 <template>
-  <v-row class="row">
+  <v-row class="row" v-if="name != undefined">
     <v-card class="mx-4 mb-4 card">
       <v-col cols="8 col">
         <v-card-title>
@@ -14,7 +14,7 @@
         <!-- <v-divider class="mx-4"></v-divider> -->
       </v-col>
       <v-col cols="2" class="float-right svg-icon">
-        <svg-icon
+        <svg-icon class="sv-icon"
           type="mdi"
           :path="mdiPencilOutline"
           @click="editSkill(id, name, level)"

@@ -73,43 +73,6 @@
               <div class="skill_per">{{ getProgress(skill.level) }}</div>
             </li>
           </ul>
-          <!-- <ul>
-            <li>
-              <div class="skill_name">HTML</div>
-              <div class="skill_progress">
-                <span style="width: 80%"></span>
-              </div>
-              <div class="skill_per">80%</div>
-            </li>
-            <li>
-              <div class="skill_name">CSS</div>
-              <div class="skill_progress">
-                <span style="width: 70%"></span>
-              </div>
-              <div class="skill_per">70%</div>
-            </li>
-            <li>
-              <div class="skill_name">SASS</div>
-              <div class="skill_progress">
-                <span style="width: 90%"></span>
-              </div>
-              <div class="skill_per">90%</div>
-            </li>
-            <li>
-              <div class="skill_name">JS</div>
-              <div class="skill_progress">
-                <span style="width: 60%"></span>
-              </div>
-              <div class="skill_per">60%</div>
-            </li>
-            <li>
-              <div class="skill_name">JQUERY</div>
-              <div class="skill_progress">
-                <span style="width: 88%"></span>
-              </div>
-              <div class="skill_per">88%</div>
-            </li>
-          </ul> -->
         </div>
         <div class="resume_item resume_social">
           <div class="title">
@@ -118,7 +81,7 @@
           <ul>
             <li>
               <div class="icon">
-                <i class="fab fa-facebook-square"></i>
+                <svg-icon class="svg-icon" type="mdi" :path="mdiFacebook"></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Facebook</p>
@@ -127,7 +90,7 @@
             </li>
             <li>
               <div class="icon">
-                <i class="fab fa-twitter-square"></i>
+                <svg-icon class="svg-icon" type="mdi" :path="mdiTwitter"></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Twitter</p>
@@ -136,7 +99,7 @@
             </li>
             <li>
               <div class="icon">
-                <i class="fab fa-youtube"></i>
+                <svg-icon class="svg-icon" type="mdi" :path="mdiYoutube"></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Youtube</p>
@@ -145,7 +108,7 @@
             </li>
             <li>
               <div class="icon">
-                <i class="fab fa-linkedin"></i>
+                <svg-icon class="svg-icon" type="mdi" :path="mdiLinkedin"></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Linkedin</p>
@@ -250,14 +213,24 @@ import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiMapMarkerOutline } from "@mdi/js";
 import { mdiPhone } from "@mdi/js";
 import { mdiEmail } from "@mdi/js";
-import { mdiLinkVariant } from '@mdi/js';
+import { mdiLinkVariant } from "@mdi/js";
+
+import { mdiFacebook } from "@mdi/js";
+import { mdiTwitter } from "@mdi/js";
+import { mdiYoutube } from "@mdi/js";
+import { mdiLinkedin } from "@mdi/js";
 export default {
   data() {
     return {
       mdiMapMarkerOutline: mdiMapMarkerOutline,
       mdiPhone: mdiPhone,
       mdiEmail: mdiEmail,
-      mdiLinkVariant: mdiLinkVariant
+      mdiLinkVariant: mdiLinkVariant,
+      mdiFacebook: mdiFacebook,
+      mdiTwitter: mdiTwitter,
+      mdiYoutube: mdiYoutube,
+      mdiLinkedin,
+      mdiLinkedin,
     };
   },
   computed: {
@@ -272,9 +245,9 @@ export default {
     getProgress(level) {
       const levels = ["Beginner", "Moderate", "Good", "Very good", "Excellent"];
       const levelsProgess = [20, 40, 60, 80, 100];
-      for(let i = 0; i < levels.length; i++){
-        if(level == levels[i]){
-          return levelsProgess[i] + '%'
+      for (let i = 0; i < levels.length; i++) {
+        if (level == levels[i]) {
+          return levelsProgess[i] + "%";
         }
       }
       return "80%";
@@ -289,15 +262,10 @@ export default {
       "getFirstNameById:" + this.$store.getters["resumes/getFirstNameById"]
     );
     console.log("resume: " + this.resume.jobtitle);
-    console.log(
-      "getSkillsByResumeId " +
-        this.$store.getters["resumes/getSkillsByResumeId"]
-    );
   },
 };
 </script>
 <style>
-
 .bold {
   font-weight: 700;
   font-size: 20px;
@@ -378,6 +346,7 @@ export default {
   margin-right: 15px;
   font-size: 16px;
   position: relative;
+  /* display: flex; */
 }
 
 .resume .icon i,
@@ -524,6 +493,8 @@ export default {
   background-color: yellowgreen;
 }
 .icon .svg-icon {
+  margin: auto;
+  height: 35px;
   display: flex;
   margin: auto;
   height: 35px;

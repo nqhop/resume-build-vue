@@ -29,4 +29,7 @@ body {
   margin: 0;
 }
 
+.sv-icon{
+  cursor: pointer;
+}
 </style>

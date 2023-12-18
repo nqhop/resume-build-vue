@@ -1,17 +1,17 @@
 <template>
   <div>
-    <skill-item-vue
-      v-for="skill in skills"
-      :key="skill"
-      :name="skill.skillName"
-      :level="skill.level"
-      :id="skill.id"
+    <experience-item
+      v-for="experience in experiences"
+      :key="experience.id"
+      :title="experience.title"
+      :desc="experience.desc"
+      :id="experience.id"
       @edit-skill="editSkill"
     >
-    </skill-item-vue>
+    </experience-item>
   </div>
 
-  <v-card v-if="IsInPutSkill || IsUpdateSkill" class="mx-auto mx-4 mb-4">
+  <v-card class="mx-auto mx-4 mb-4">
     <v-card-title>
       <span class="text-h6">
         <v-text-field
@@ -23,37 +23,29 @@
     </v-card-title>
 
     <v-divider class="mx-4"></v-divider>
-
-    <v-card-text>
-      <span class="subheading">Level</span>
-
-      <v-chip-group
-        v-model="selection"
-        selected-class="text-deep-purple-accent-4"
-        mandatory
-      >
-        <v-chip v-for="level in levels" :key="level" :value="level">
-          {{ level }}
-        </v-chip>
-      </v-chip-group>
-    </v-card-text>
   </v-card>
-  <base-button
-    class="btn float-left"
-    :name="baseButtonName()"
-    @click="changeIsPnputSkill"
-  />
+
+  <experience-item-vue/>
+
+  <!-- <base-button
+      class="btn float-left"
+      :name="baseButtonName()"
+      @click="changeIsPnputSkill"
+    /> -->
 </template>
 <script>
 import BaseButton from "../BaseButton.vue";
-import skillItemVue from "./skillItem.vue";
+import experienceItemVue from './experienceItem.vue';
+import experienceItem from "./experienceItem.vue";
 
 export default {
   components: {
     BaseButton,
-    skillItemVue,
+    experienceItem,
+    experienceItemVue
   },
   data: () => ({
+    
     selection: "Beginner",
     levels: ["Beginner", "Moderate", "Good", "Very good", "Excellent"],
     IsInPutSkill: false,
@@ -62,8 +54,8 @@ export default {
     skillIdForUpdate: "",
   }),
   computed: {
-    skills() {
-      return this.$store.getters["resumes/getSkillsByResumeId"];
+    experiences() {
+      return this.$store.getters["resumes/getExperiencesByResumeId"];
     },
   },
   methods: {
@@ -71,8 +63,14 @@ export default {
       return this.IsUpdateSkill ? "update" : "Add skill";
     },
     changeIsPnputSkill() {
+      console.log(
+        "getSkillsByResumeId " +
+          this.$store.getters["resumes/getSkillsByResumeId"]
+      );
 
       this.IsInPutSkill = true;
+      console.log("newSkill " + this.newSkill);
+      console.log("selection " + this.selection);
 
       if (this.newSkill.length > 0) {
         if (this.IsUpdateSkill) {
@@ -97,11 +95,15 @@ export default {
       }
     },
     editSkill(skillId, name, level) {
-      // console.log("editSkill " + skillId + " " + name + " " + level);
       this.skillIdForUpdate = skillId;
       this.newSkill = name;
       this.selection = level;
       this.IsUpdateSkill = true;
+    },
+  },
+  mutations: {
+    updateData(state, newData) {
+      console.log("newData " + newData);
     },
   },
 };
