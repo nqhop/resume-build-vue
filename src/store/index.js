@@ -10,6 +10,20 @@ const store = createStore({
     return {
       isLoggedIn: false,
       currendResumeId: "01",
+      // monthsOfyear: 1,
+      monthsOfyear: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
     };
   },
   getters: {
@@ -18,6 +32,9 @@ const store = createStore({
     },
     getCurrendResumeId(state) {
       return state.currendResumeId;
+    },
+    getMonths(state) {
+      return state.monthsOfyear;
     },
   },
   mutations: {

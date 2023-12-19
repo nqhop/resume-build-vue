@@ -41,6 +41,14 @@ export default {
               title: "Lorem ipsum dolor sit amet",
               desc: "Lorem ipsum dolor sit amet"
             }
+          ],
+          educations: [
+            {
+              id: "01",
+              duration: "2013 - 2015",
+              title: "Lorem ipsum dolor sit amet",
+              desc: "Lorem ipsum dolor sit amet"
+            }
           ]
         },
       ],

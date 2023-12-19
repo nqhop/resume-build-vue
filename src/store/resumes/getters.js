@@ -47,5 +47,11 @@ export default {
     const resume = state.resume.find((item) => item.id == currendResumeId);
     const experiences = resume.experiences;
     return experiences;
+  },
+  getEducationByResumeId(state, _, rootState, _2){
+    const currendResumeId = rootState.currendResumeId;
+    const resume = state.resume.find((item) => item.id == currendResumeId);
+    const educations = resume.educations;
+    return educations;
   }
 };
