@@ -1,5 +1,5 @@
 <template>
-  <v-select :disabled="disabled" v-model="value" :items="items" color="primary"></v-select>
+  <v-select :disabled="isDisable" v-model="value" :items="items" color="primary"></v-select>
 </template>
 <script>
 export default {
@@ -17,7 +17,6 @@ export default {
   },
   data: () => ({
     value: "",
-    disabled: false
   }),
 
   mounted() {
@@ -28,7 +27,6 @@ export default {
     } else {
       this.value = this.isMonth ? "Month" : "Year";
     }
-
   },
 };
 </script>

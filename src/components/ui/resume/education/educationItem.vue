@@ -90,7 +90,7 @@
                   <date-menus-vue
                     :items="months"
                     :isMonth="true"
-                    
+                    :isDisable="presentSelected"
                     :itemsPlaceholder="education.end"
                   />
                 </div>
@@ -157,7 +157,7 @@ export default {
       end: null,
       desc: "",
     },
-    presentSelected: "",
+    presentSelected: false,
   }),
   computed: {
     months() {
