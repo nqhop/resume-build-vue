@@ -178,6 +178,10 @@
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Nostrum, voluptatibus!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Nostrum, voluptatibus!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Nostrum, voluptatibus!
               </p>
             </div>
           </li>
@@ -443,6 +447,7 @@ export default {
   height: 6px;
   border-radius: 50%;
   border: 2px solid #0bb5f4;
+  /* border: 2px solid red; */
 }
 
 .resume .resume_right .resume_work ul li:after,

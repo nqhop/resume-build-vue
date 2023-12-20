@@ -3,16 +3,23 @@
 </template>
 <script>
 export default {
-  props: ["items"],
+  props: {
+    items: {},
+    isMonth: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
-    // items: ["foo", "bar", "fizz", "buzz"],
     value: "",
   }),
+  computed: {
+    value() {
+      return this.isMonth ? "Month" : "Year";
+    },
+  },
   mounted() {
-    // const itemsArr = JSON.parse(JSON.stringify(this.items))
-    // console.log("typeof" +  typeof(this.items));
-    console.log(this.items);
-    // this.value = this.items.title
+    // console.log(this.items);
   },
 };
 </script>

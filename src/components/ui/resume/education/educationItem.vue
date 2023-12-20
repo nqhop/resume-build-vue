@@ -53,25 +53,44 @@
 
           <div class="row start-end-date">
             <div class="col-half">Start date</div>
-            <div class="col-half">End date</div>
+            <div class="col-half">
+              <span>End date</span>
+              <v-checkbox
+                label="Present"
+                class="present"
+                color="primary"
+                v-model="presentSelected"
+              ></v-checkbox>
+            </div>
           </div>
 
           <div class="row">
             <div class="col-half">
               <div class="row">
                 <div class="col-half">
-                  <date-menus-vue />
+                  <date-menus-vue :items="months" :isMonth="true" />
                 </div>
                 <div class="col-half">
-                  <date-menus-vue />
+                  <date-menus-vue :items="years" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-half">
+              <div class="row">
+                <div class="col-half">
+                  <date-menus-vue :items="months" :isMonth="true" />
+                </div>
+                <div class="col-half">
+                  <date-menus-vue :items="years" />
                 </div>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-half">
-              <date-menus-vue :items="months" />
+            <div class="col-full">
+              <v-textarea variant="solo-filled" v-model="summary" label="Description" color="primary"></v-textarea>
             </div>
           </div>
         </div>
@@ -96,10 +115,14 @@ export default {
       end: null,
       desc: "",
     },
+    presentSelected: "",
   }),
   computed: {
     months() {
       return this.$store.getters.getMonths;
+    },
+    years() {
+      return this.$store.getters.getYears;
     },
   },
   methods: {
@@ -140,5 +163,11 @@ export default {
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+.present {
+  display: inline-block;
+  float: inline-end;
+  height: 45px;
+  margin-top: -20px;
 }
 </style>
