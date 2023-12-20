@@ -23,9 +23,9 @@ export default {
           country: "",
           city: "",
           summary: "",
-          profileLink:"",
+          profileLink: "",
           // avatar: 'E:/Workspace/Vue/resume-build-vue/src/assets/logo.png',
-          avatar: '@/assets/logo.png',
+          avatar: "@/assets/logo.png",
           // import skillsVue from '@/components/ui/resume/skills.vue';
           skills: [
             {
@@ -39,17 +39,29 @@ export default {
               id: "01",
               duration: "2013 - 2015",
               title: "Lorem ipsum dolor sit amet",
-              desc: "Lorem ipsum dolor sit amet"
-            }
+              desc: "Lorem ipsum dolor sit amet",
+            },
           ],
           educations: [
             {
               id: "01",
-              duration: "2013 - 2015",
-              title: "Lorem ipsum dolor sit amet",
-              desc: "Lorem ipsum dolor sit amet"
-            }
-          ]
+              education: "bachelor",
+              schoolName: "Ton Duc Thang Univercirt",
+              city: "Ho Chi Minh",
+              start: "May 2022",
+              end: "May 2023",
+              desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!",
+            },
+            {
+              id: "02",
+              education: "certificate",
+              schoolName: "Koria IT school",
+              city: "Ho Chi Minh",
+              start: "May 2023",
+              end: "movember 2023",
+              desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!",
+            },
+          ],
         },
       ],
     };

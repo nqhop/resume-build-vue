@@ -217,7 +217,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .bold {
   font-weight: 700;
   font-size: 20px;

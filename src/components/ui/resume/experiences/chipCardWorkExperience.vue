@@ -34,8 +34,8 @@
     /> -->
 </template>
 <script>
-import BaseButton from "../BaseButton.vue";
-import experienceItemVue from './experienceItem.vue';
+import BaseButton from "../../BaseButton.vue";
+import experienceItemVue from "./experienceItem.vue";
 import experienceItem from "./experienceItem.vue";
 
 export default {

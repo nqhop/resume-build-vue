@@ -1,31 +1,25 @@
 <template>
     <div>
-      <experience-item
-        v-for="experience in educations"
-        :key="experience.id"
-        :title="experience.title"
-        :desc="experience.desc"
-        :id="experience.id"
-        @edit-skill="editSkill"
+      <!-- <education-item
+      v-for="education in educations"
+      :key="education.id"
+      :education="education.education"
+      :schoolName="education.schoolName"
+      :city="education.city"
       >
-      </experience-item>
+
+      </education-item> -->
+
+      <education-item class="education-item"
+      v-for="education in educations"
+      :key="education.id"
+      :education="education"
+      >
+
+      </education-item>
     </div>
   
-    <v-card class="mx-auto mx-4 mb-4">
-      <v-card-title>
-        <span class="text-h6">
-          <v-text-field
-            placeholder="e.g Java"
-            color="primary"
-            v-model="newSkill"
-          ></v-text-field>
-        </span>
-      </v-card-title>
-  
-      <v-divider class="mx-4"></v-divider>
-    </v-card>
-  
-    <education-item/>
+    <!-- <education-item/> -->
   
     <!-- <base-button
         class="btn float-left"
@@ -46,6 +40,8 @@
     }),
     computed: {
       educations() {
+        console.log("chipCardEducation");
+        console.log(this.$store.getters["resumes/getEducationByResumeId"]);
         return this.$store.getters["resumes/getEducationByResumeId"];
       },
     },
@@ -99,4 +95,9 @@
     },
   };
   </script>
-  
+
+<style scoped>
+.education-item {
+  margin-bottom: 8px;
+}
+</style>

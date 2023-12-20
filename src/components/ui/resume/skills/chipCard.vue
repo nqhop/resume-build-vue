@@ -45,7 +45,7 @@
   />
 </template>
 <script>
-import BaseButton from "../BaseButton.vue";
+import BaseButton from "../../BaseButton.vue";
 import skillItemVue from "./skillItem.vue";
 
 export default {

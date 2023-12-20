@@ -81,7 +81,11 @@
           <ul>
             <li>
               <div class="icon">
-                <svg-icon class="svg-icon" type="mdi" :path="mdiFacebook"></svg-icon>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiFacebook"
+                ></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Facebook</p>
@@ -90,7 +94,11 @@
             </li>
             <li>
               <div class="icon">
-                <svg-icon class="svg-icon" type="mdi" :path="mdiTwitter"></svg-icon>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiTwitter"
+                ></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Twitter</p>
@@ -99,7 +107,11 @@
             </li>
             <li>
               <div class="icon">
-                <svg-icon class="svg-icon" type="mdi" :path="mdiYoutube"></svg-icon>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiYoutube"
+                ></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Youtube</p>
@@ -108,7 +120,11 @@
             </li>
             <li>
               <div class="icon">
-                <svg-icon class="svg-icon" type="mdi" :path="mdiLinkedin"></svg-icon>
+                <svg-icon
+                  class="svg-icon"
+                  type="mdi"
+                  :path="mdiLinkedin"
+                ></svg-icon>
               </div>
               <div class="data">
                 <p class="semi-bold">Linkedin</p>
@@ -170,18 +186,32 @@
         <div class="title">
           <p class="bold">Education</p>
         </div>
+        <ul v-for="education in resume.educations" :key="education.id">
+          <li>
+            <div class="education-year">
+              <p class="education">{{ education.education }}</p>
+              <p class="years">{{ education.start }} - {{ education.end }}</p>
+            </div>
+            <div class="school-year">
+              {{ education.schoolName }}, {{ education.city }}
+            </div>
+            <p class="desc">{{ education.desc }}</p>
+          </li>
+        </ul>
+
         <ul>
           <li>
-            <div class="date">2010 - 2013</div>
+            <div class="education-year">
+              <p class="education">TDTU</p>
+              <p>TDTU</p>
+            </div>
             <div class="info">
               <p class="semi-bold">Web Designing (Texas University)</p>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum, voluptatibus!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum, voluptatibus!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum, voluptatibus!
+                Nostrum, voluptatibus! Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Nostrum, voluptatibus! Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Nostrum, voluptatibus!
               </p>
             </div>
           </li>
@@ -269,7 +299,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .bold {
   font-weight: 700;
   font-size: 20px;
@@ -282,21 +312,22 @@ export default {
 }
 
 .resume {
-  width: 100%;
+  /* width: 100%; */
+  width: 800px;
   height: 100%;
   display: flex;
   margin: 50px auto;
 }
 
 .resume .resume_left {
-  /* width: 280px; */
-  width: 33.33%;
-  /*background: #0bb5f4;*/
+  width: 280px;
+  /* width: 33.33%; */
+  background: #0bb5f4;
 }
 
 .resume .resume_left .resume_profile {
-  /* width: 100%; */
-  height: 25%;
+  width: 100%;
+  height: 280px;
 }
 
 .resume .resume_left .resume_profile img {
@@ -411,12 +442,14 @@ export default {
 
 .resume .resume_right .bold {
   color: #0bb5f4;
+  /* color: red; */
 }
 
 .resume .resume_right .resume_work ul,
 .resume .resume_right .resume_education ul {
   padding-left: 40px;
   overflow: hidden;
+  list-style-type: none;
 }
 
 .resume .resume_right ul li {
@@ -472,7 +505,8 @@ export default {
   border: 2px solid #0bb5f4;
   border-radius: 50%;
   position: relative;
-  color: #0bb5f4;
+  /* color: #0bb5f4; */
+  color: red;
 }
 
 .resume .resume_right .resume_hobby ul li i {
@@ -503,5 +537,20 @@ export default {
   display: flex;
   margin: auto;
   height: 35px;
+}
+.education-year {
+  display: flex;
+  justify-content: space-between;
+}
+.education-year .education {
+  font-size: 18px;
+  font-weight: 500;
+}
+.education-year .years {
+  font-size: 14;
+  font-weight: 400;
+}
+ul .desc {
+  margin-bottom: 12px;
 }
 </style>

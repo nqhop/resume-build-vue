@@ -1,5 +1,5 @@
 <template>
-  <v-expansion-panels>
+  <v-expansion-panels v-if="education">
     <v-expansion-panel>
       <v-expansion-panel-title expand-icon="mdi-plus" collapse-icon="mdi-minus">
         <template v-slot:default="{ expanded }">
@@ -9,7 +9,7 @@
             </v-col>
             <v-col cols="8" class="text-subtitle-1">
               <v-fade-transition leave-absolute>
-                <span v-if="expanded" key="0"> Enter your experience</span>
+                <span v-if="expanded" key="0"> Enter your education</span>
                 <span v-else key="1">
                   {{ education.schoolName }}
                 </span>
@@ -18,6 +18,7 @@
           </v-row>
         </template>
       </v-expansion-panel-title>
+
       <v-expansion-panel-text>
         <div class="main">
           <div class="row">
@@ -68,21 +69,36 @@
             <div class="col-half">
               <div class="row">
                 <div class="col-half">
-                  <date-menus-vue :items="months" :isMonth="true" />
+                  <date-menus-vue
+                    :items="months"
+                    :isMonth="true"
+                    :itemsPlaceholder="education.start"
+                  />
                 </div>
                 <div class="col-half">
-                  <date-menus-vue :items="years" />
+                  <date-menus-vue
+                    :items="years"
+                    :itemsPlaceholder="education.start"
+                  />
                 </div>
               </div>
             </div>
-
+            <!-- :isDisable="disabledMonthYear()" -->
             <div class="col-half">
               <div class="row">
                 <div class="col-half">
-                  <date-menus-vue :items="months" :isMonth="true" />
+                  <date-menus-vue
+                    :items="months"
+                    :isMonth="true"
+                    
+                    :itemsPlaceholder="education.end"
+                  />
                 </div>
                 <div class="col-half">
-                  <date-menus-vue :items="years" />
+                  <date-menus-vue
+                    :items="years"
+                    :itemsPlaceholder="education.end"
+                  />
                 </div>
               </div>
             </div>
@@ -90,8 +106,26 @@
 
           <div class="row">
             <div class="col-full">
-              <v-textarea variant="solo-filled" v-model="summary" label="Description" color="primary"></v-textarea>
+              <v-textarea
+                variant="solo-filled"
+                v-model="education.desc"
+                label="Description"
+                color="primary"
+              ></v-textarea>
             </div>
+          </div>
+
+          <div class="row bottom-button">
+            <base-button
+              class="bottom-button-done"
+              name="DONE"
+              :icon="mdiCheck"
+            />
+            <base-button
+              name="Delete"
+              :icon="mdiDeleteOutline"
+              colorBtn="#8c52ff"
+            />
           </div>
         </div>
       </v-expansion-panel-text>
@@ -101,11 +135,19 @@
 
 <script>
 import DateMenusVue from "../../DateMenus.vue";
+import BaseButton from "../../BaseButton.vue";
+import { mdiDeleteOutline } from "@mdi/js";
+import { mdiCheck } from "@mdi/js";
 export default {
+  props: ["education"],
   components: {
     DateMenusVue,
+    BaseButton,
   },
   data: () => ({
+    mdiCheck: mdiCheck,
+    mdiDeleteOutline: mdiDeleteOutline,
+    presentCheckBox: true,
     education: {
       education: "",
       schoolName: "",
@@ -124,18 +166,22 @@ export default {
     years() {
       return this.$store.getters.getYears;
     },
+    disabledMonthYear() {
+      return this.presentCheckBox;
+    },
+  },
+  watch: {
+    presentSelected(value) {
+      this.presentSelected = value;
+      console.log("presentSelected" + value);
+    },
   },
   methods: {
+    
     showDate(date) {
       this.date = date;
     },
   },
-  //   computed: {
-  //     months() {
-  //       console.log("getMonths");
-  //       return this.$store.getters["getMonths"];
-  //     },
-  //   },
 };
 </script>
 <style scoped>
@@ -169,5 +215,13 @@ export default {
   float: inline-end;
   height: 45px;
   margin-top: -20px;
+}
+.bottom-button {
+  float: right;
+  display: flex;
+}
+
+.bottom-button-done {
+  margin-right: 16px;
 }
 </style>

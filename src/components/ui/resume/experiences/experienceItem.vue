@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import myMonthPicker from "../myMonthPicker.vue";
+import myMonthPicker from "../../myMonthPicker.vue";
 
 // import {MonthPickerInput} from "vue-month-picker";
 export default {
