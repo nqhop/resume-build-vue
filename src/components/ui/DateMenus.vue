@@ -1,14 +1,20 @@
 <template>
-  <v-select :disabled="isDisable" v-model="value" :items="items" color="primary"></v-select>
+  <v-select
+    :disabled="isDisable"
+    v-model="value"
+    :items="items"
+    color="primary"
+  ></v-select>
 </template>
 <script>
 export default {
   props: {
     items: {},
     itemsPlaceholder: {},
+    typeOfDate: {},
     isDisable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isMonth: {
       type: Boolean,
@@ -27,6 +33,11 @@ export default {
     } else {
       this.value = this.isMonth ? "Month" : "Year";
     }
+  },
+  watch: {
+    value() {
+      this.$emit("change-dates", this.value, this.typeOfDate);
+    },
   },
 };
 </script>

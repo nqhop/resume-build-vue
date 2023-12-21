@@ -73,12 +73,16 @@
                     :items="months"
                     :isMonth="true"
                     :itemsPlaceholder="education.start"
+                    @change-dates="changeDates"
+                    
+                    typeOfDate="startMonth"
                   />
                 </div>
                 <div class="col-half">
                   <date-menus-vue
                     :items="years"
                     :itemsPlaceholder="education.start"
+                    typeOfDate="startYear"
                   />
                 </div>
               </div>
@@ -92,12 +96,14 @@
                     :isMonth="true"
                     :isDisable="presentSelected"
                     :itemsPlaceholder="education.end"
+                    typeOfDate="endMonth"
                   />
                 </div>
                 <div class="col-half">
                   <date-menus-vue
                     :items="years"
                     :itemsPlaceholder="education.end"
+                    typeOfDate="startMonth"
                   />
                 </div>
               </div>
@@ -148,15 +154,6 @@ export default {
     mdiCheck: mdiCheck,
     mdiDeleteOutline: mdiDeleteOutline,
     presentCheckBox: true,
-    education: {
-      education: "",
-      schoolName: "",
-      city: "",
-      location: null,
-      start: null,
-      end: null,
-      desc: "",
-    },
     presentSelected: false,
   }),
   computed: {
@@ -177,10 +174,22 @@ export default {
     },
   },
   methods: {
-    
     showDate(date) {
       this.date = date;
     },
+    changeDates(value, typeOfDate){
+      console.log("education " + value);
+      console.log("typeOfDate " + typeOfDate);
+      switch(typeOfDate){
+
+        case "startMonth":
+
+          break
+        case "startYear":
+        case "endMonth":
+        case "startMonth":
+      }
+    }
   },
 };
 </script>
